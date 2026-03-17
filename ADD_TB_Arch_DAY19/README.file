@@ -1,0 +1,109 @@
+
+Day-19: Clean Testbench Architecture
+Objective
+
+Simplify the testbench structure by delegating component creation and connection to the environment class (env).
+
+Earlier architecture:
+
+TB
+ ├── generator
+ ├── driver
+ ├── monitor
+ └── scoreboard
+
+This structure becomes difficult to manage as the project grows.
+
+Day-19 introduces environment-based architecture.
+
+New Architecture
+TB
+ └── ENV
+      ├── Generator
+      ├── Driver
+      ├── Monitor
+      └── Scoreboard
+
+The environment now manages all verification components.
+
+Responsibilities
+Testbench (TB)
+
+The testbench is now very minimal.
+
+Responsibilities:
+
+1. Create interface
+2. Instantiate DUT
+3. Create ENV
+4. Start simulation
+
+Example structure:
+
+module tb;
+
+  alu_if vif();
+  env e;
+
+  initial begin
+    e = new(vif);
+    e.run();
+  end
+
+endmodule
+Environment (env)
+
+The environment acts as the verification manager.
+
+Responsibilities:
+
+1. Create mailboxes
+2. Instantiate generator, driver, monitor, scoreboard
+3. Connect components
+4. Start all components concurrently
+Data Flow
+
+Two mailbox channels are used.
+
+Stimulus Path
+Generator → mbx_gd → Driver → DUT
+Observation Path
+DUT → Monitor → mbx_ms → Scoreboard
+
+Full pipeline:
+
+Generator
+   ↓
+mbx_gd
+   ↓
+Driver
+   ↓
+DUT
+   ↓
+Monitor
+   ↓
+mbx_ms
+   ↓
+Scoreboard
+Benefits of Environment Architecture
+✔ Modular verification structure
+✔ Easier scalability
+✔ Cleaner testbench
+✔ Separation of responsibilities
+✔ Similar architecture to UVM environments
+Skills Achieved by Day-19
+
+You have now implemented:
+
+RTL Design
+Transaction-based verification
+Mailboxes
+Driver / Monitor architecture
+Virtual interfaces
+Scoreboards
+Functional coverage
+Assertions
+Environment architecture
+Clean testbench structure
+
+This forms the foundation of professional verification environments.
