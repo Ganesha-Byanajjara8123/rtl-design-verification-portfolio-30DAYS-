@@ -1,0 +1,95 @@
+Day-20 README (Simulation Completion Control)
+
+You can place this in your project repo.
+
+Day-20: Simulation Completion Control
+Objective
+
+Prevent simulations from running forever by adding transaction counting and automatic simulation termination.
+
+Earlier issue:
+
+monitor.run() → forever loop
+scoreboard.run() → forever loop
+
+Simulation never ends.
+
+Solution
+
+Use the scoreboard as a verification completion controller.
+
+The scoreboard counts verified transactions.
+
+When all transactions are processed, simulation stops.
+
+Architecture
+
+Verification pipeline:
+
+Generator → mbx_gd → Driver → DUT
+                              ↓
+                           Monitor
+                              ↓
+                           mbx_ms
+                              ↓
+                          Scoreboard
+
+Scoreboard receives all observed transactions, making it the best place to track completion.
+
+Scoreboard Enhancement
+
+Two variables are added:
+
+int txn_count
+int total_txn
+
+Purpose:
+
+txn_count → number of verified transactions
+total_txn → expected number of transactions
+Scoreboard Logic
+
+Pseudo flow:
+
+forever
+    receive transaction
+    check correctness
+    increment counter
+
+    if counter == total_txn
+        finish simulation
+
+Example logic:
+
+txn_count++
+
+if(txn_count == total_txn)
+    $finish
+Simulation Flow After Day-20
+Generator produces 100 transactions
+Driver drives DUT inputs
+Monitor observes DUT outputs
+Scoreboard verifies outputs
+Scoreboard reaches 100 transactions
+Simulation stops automatically
+Benefits
+✔ Automatic simulation termination
+✔ Prevent infinite simulations
+✔ Clear test completion criteria
+✔ Cleaner verification control
+Skills Achieved by Day-20
+
+You now implemented:
+
+RTL design verification
+Transaction-based architecture
+Generator/Driver/Monitor
+Mailbox communication
+Virtual interfaces
+Scoreboard checking
+Functional coverage
+Assertions
+Environment architecture
+Simulation control logic
+
+This forms a complete SystemVerilog verification environment.
