@@ -86,4 +86,3 @@ clock-based synchronization
 accurate monitor sampling
 timing alignment between DUT and verification components
 
-This is a core verification practice used in industry environments.
