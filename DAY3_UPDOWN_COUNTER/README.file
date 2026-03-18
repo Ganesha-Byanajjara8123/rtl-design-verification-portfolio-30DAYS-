@@ -1,1 +1,47 @@
 
+##"day-3 ouput with adding/shipping SV"
+
+
+# KERNEL: Time=0, Reset=1, en=x, Up/Down=x, Count=x, tc=x
+# KERNEL: Time=5, Reset=1, en=x, Up/Down=x, Count=0, tc=0
+# KERNEL: Time=15, Reset=0, en=1, Up/Down=1, Count=1, tc=0
+# KERNEL: Time=25, Reset=0, en=1, Up/Down=1, Count=2, tc=0
+# KERNEL: Time=35, Reset=0, en=1, Up/Down=1, Count=3, tc=0
+# KERNEL: Time=45, Reset=0, en=1, Up/Down=1, Count=4, tc=0
+# KERNEL: Time=55, Reset=0, en=1, Up/Down=1, Count=5, tc=0
+# KERNEL: Time=65, Reset=0, en=1, Up/Down=1, Count=6, tc=0
+# KERNEL: Time=75, Reset=0, en=1, Up/Down=1, Count=7, tc=0
+# KERNEL: Time=85, Reset=0, en=1, Up/Down=1, Count=8, tc=0
+# KERNEL: Time=95, Reset=0, en=1, Up/Down=1, Count=9, tc=0
+# KERNEL: Time=105, Reset=0, en=1, Up/Down=1, Count=10, tc=0
+# KERNEL: Time=115, Reset=0, en=1, Up/Down=1, Count=11, tc=0
+# KERNEL: Time=125, Reset=0, en=1, Up/Down=1, Count=12, tc=0
+# KERNEL: Time=135, Reset=0, en=1, Up/Down=1, Count=13, tc=0
+# KERNEL: Time=145, Reset=0, en=1, Up/Down=1, Count=14, tc=0
+# KERNEL: Time=155, Reset=0, en=1, Up/Down=1, Count=15, tc=1
+# KERNEL: Time=165, Reset=0, en=1, Up/Down=1, Count=0, tc=0
+# KERNEL: Time=175, Reset=0, en=1, Up/Down=1, Count=1, tc=0
+# KERNEL: Time=185, Reset=0, en=1, Up/Down=1, Count=2, tc=0
+# KERNEL: Time=195, Reset=0, en=1, Up/Down=1, Count=3, tc=0
+# KERNEL: Time=205, Reset=0, en=1, Up/Down=1, Count=4, tc=0
+# KERNEL: Time=215, Reset=0, en=1, Up/Down=0, Count=5, tc=0
+# KERNEL: Time=225, Reset=0, en=1, Up/Down=0, Count=4, tc=0
+# KERNEL: Time=235, Reset=0, en=1, Up/Down=0, Count=3, tc=0
+# KERNEL: Time=245, Reset=0, en=1, Up/Down=0, Count=2, tc=0
+# KERNEL: Time=255, Reset=0, en=1, Up/Down=0, Count=1, tc=0
+# KERNEL: Time=265, Reset=0, en=1, Up/Down=0, Count=0, tc=0
+# KERNEL: Time=275, Reset=0, en=1, Up/Down=0, Count=15, tc=1
+# KERNEL: Time=285, Reset=0, en=1, Up/Down=0, Count=14, tc=0
+# KERNEL: Time=295, Reset=0, en=1, Up/Down=0, Count=13, tc=0
+# KERNEL: Time=305, Reset=0, en=1, Up/Down=0, Count=12, tc=0
+# KERNEL: Time=315, Reset=0, en=1, Up/Down=0, Count=11, tc=0
+# KERNEL: Time=325, Reset=0, en=1, Up/Down=0, Count=10, tc=0
+# KERNEL: Time=335, Reset=0, en=1, Up/Down=0, Count=9, tc=0
+# KERNEL: Time=345, Reset=0, en=1, Up/Down=0, Count=8, tc=0
+# KERNEL: Time=355, Reset=0, en=1, Up/Down=0, Count=7, tc=0
+# KERNEL: Time=365, Reset=0, en=1, Up/Down=0, Count=6, tc=0
+# KERNEL: Time=375, Reset=0, en=1, Up/Down=0, Count=5, tc=0
+# KERNEL: Time=385, Reset=0, en=1, Up/Down=0, Count=4, tc=0
+# KERNEL: Time=395, Reset=0, en=1, Up/Down=0, Count=3, tc=0
+# KERNEL: Time=405, Reset=0, en=1, Up/Down=0, Count=2, tc=0
+# KERNEL: Simulation finished
