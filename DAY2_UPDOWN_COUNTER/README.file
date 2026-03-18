@@ -1,1 +1,37 @@
 
+Day-2 with simple 8-bit up_down counter 
+
+# KERNEL: ASDB file was created in location /home/runner/dataset.asdb
+# KERNEL: Time=0, Reset=1, en=0, Up/Down=0, Count=x
+# KERNEL: Time=5, Reset=1, en=0, Up/Down=0, Count=0
+# KERNEL: Time=10, Reset=0, en=1, Up/Down=1, Count=0
+# KERNEL: Time=15, Reset=0, en=1, Up/Down=1, Count=1
+# KERNEL: Time=25, Reset=0, en=1, Up/Down=1, Count=2
+# KERNEL: Time=35, Reset=0, en=1, Up/Down=1, Count=3
+# KERNEL: Time=45, Reset=0, en=1, Up/Down=1, Count=4
+# KERNEL: Time=55, Reset=0, en=1, Up/Down=1, Count=5
+# KERNEL: Time=65, Reset=0, en=1, Up/Down=1, Count=6
+# KERNEL: Time=75, Reset=0, en=1, Up/Down=1, Count=7
+# KERNEL: Time=85, Reset=0, en=1, Up/Down=1, Count=8
+# KERNEL: Time=95, Reset=0, en=1, Up/Down=1, Count=9
+# KERNEL: Time=105, Reset=0, en=1, Up/Down=1, Count=10
+# KERNEL: Time=115, Reset=0, en=1, Up/Down=1, Count=11
+# KERNEL: Time=125, Reset=0, en=1, Up/Down=1, Count=12
+# KERNEL: Time=135, Reset=0, en=1, Up/Down=1, Count=13
+# KERNEL: Time=145, Reset=0, en=1, Up/Down=1, Count=14
+# KERNEL: Time=155, Reset=0, en=1, Up/Down=1, Count=15
+# KERNEL: Time=165, Reset=0, en=1, Up/Down=1, Count=16
+# KERNEL: Time=175, Reset=0, en=1, Up/Down=1, Count=17
+# KERNEL: Time=185, Reset=0, en=1, Up/Down=1, Count=18
+# KERNEL: Time=195, Reset=0, en=1, Up/Down=1, Count=19
+# KERNEL: Time=205, Reset=0, en=1, Up/Down=1, Count=20
+# KERNEL: Time=210, Reset=0, en=1, Up/Down=0, Count=20
+# KERNEL: Time=215, Reset=0, en=1, Up/Down=0, Count=19
+# KERNEL: Time=225, Reset=0, en=1, Up/Down=0, Count=18
+# KERNEL: Time=235, Reset=0, en=1, Up/Down=0, Count=17
+# KERNEL: Time=245, Reset=0, en=1, Up/Down=0, Count=16
+# KERNEL: Time=255, Reset=0, en=1, Up/Down=0, Count=15
+# KERNEL: Time=260, Reset=1, en=1, Up/Down=0, Count=15
+# KERNEL: Time=265, Reset=1, en=1, Up/Down=0, Count=0
+# KERNEL: Time=270, Reset=0, en=0, Up/Down=0, Count=0
+# KERNEL: Simulation finished
