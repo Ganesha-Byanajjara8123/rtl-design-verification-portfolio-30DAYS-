@@ -1,0 +1,66 @@
+Day-22 (Clock-Synchronized Driver)
+Objective
+
+Improve driver timing to avoid race conditions and ensure the DUT receives stable inputs.
+
+Problem With Immediate Driving
+
+Earlier the driver updated inputs immediately:
+
+vif.A = txn.A
+vif.B = txn.B
+vif.op = txn.op
+
+If the DUT samples inputs on the same clock edge, simulation order becomes undefined.
+
+Example:
+
+posedge clk
+DUT samples inputs
+Driver updates inputs
+
+This creates a race condition.
+
+Solution
+
+Synchronize the driver with the clock and drive inputs on:
+
+@(negedge clk)
+
+Timing sequence:
+
+negedge clk → driver updates inputs
+posedge clk → DUT samples stable inputs
+Driver Workflow
+receive transaction from generator
+wait for clock edge
+drive inputs through virtual interface
+
+Pipeline:
+
+Generator → Driver → DUT
+                       ↓
+                    Monitor
+                       ↓
+                    Scoreboard
+Implementation
+
+Driver now uses the virtual interface clock:
+
+@(negedge vif.clk)
+
+This ensures the driver interacts with the DUT using cycle-accurate timing.
+
+Benefits
+✔ stable DUT inputs
+✔ no race conditions
+✔ deterministic simulation behavior
+✔ cycle-accurate verification
+Skills Achieved by Day-22
+
+You now understand:
+
+driver timing control
+race condition avoidance
+clock-synchronized stimulus
+cycle-accurate verification environments
