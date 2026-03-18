@@ -20,7 +20,7 @@ always @(posedge clk or posedge reset) begin
 
             count <= count + 1'b1;
         end
-@@ -22,6 +24,6 @@ always @(posedge clk or posedge reset) begin
+always @(posedge clk or posedge reset) begin
         end
     end
 end
