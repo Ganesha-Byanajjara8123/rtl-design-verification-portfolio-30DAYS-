@@ -1,1 +1,89 @@
 
+Day-21 README — Clock-Synchronized Monitoring
+Objective
+
+Improve the monitor sampling mechanism by synchronizing it with the design clock instead of using arbitrary time delays.
+
+Earlier implementation used:
+
+#2
+
+This is unreliable because signal updates in synchronous digital designs occur relative to the clock, not arbitrary delays.
+
+Problem With Time Delay Sampling
+
+Using:
+
+#2
+
+may cause the monitor to sample:
+
+old values
+
+intermediate glitch values
+
+unstable signals
+
+Example:
+
+Clock edge → DUT updates result
+Monitor samples before update → incorrect capture
+
+This leads to incorrect verification behavior.
+
+Correct Solution
+
+Use clock-synchronized sampling:
+
+@(posedge clk)
+
+This guarantees the monitor captures signals exactly when the DUT updates.
+
+Updated Monitor Behavior
+
+Old monitor flow:
+
+delay
+capture signals
+send to scoreboard
+
+New monitor flow:
+
+wait for clock edge
+capture DUT signals
+create transaction
+send transaction to mailbox
+Monitor Pipeline
+DUT → Monitor → Mailbox → Scoreboard
+
+Monitor observes DUT signals through the virtual interface.
+
+Example Monitor Sampling Flow
+
+Conceptually the monitor operates like:
+
+forever
+    wait for posedge clk
+    create transaction
+    capture A, B, op, result
+    send transaction to mailbox
+
+This ensures accurate and stable verification.
+
+Benefits
+
+Clock-synchronized monitoring provides:
+
+✔ deterministic signal capture
+✔ stable transaction observation
+✔ cycle-accurate verification
+✔ behavior similar to real hardware timing
+Skills Added (Day-21)
+
+You now understand:
+
+clock-based synchronization
+accurate monitor sampling
+timing alignment between DUT and verification components
+
+This is a core verification practice used in industry environments.
