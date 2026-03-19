@@ -1,0 +1,11 @@
+##day5 i modify the above code to below points 
+Day-5 Status
+
+ now I have:
+Parameterized counter
+Parameterized FIFO
+Full/empty logic
+Proper protection
+Verified behavior
+This is solid RTL foundation.
+
