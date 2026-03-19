@@ -1,5 +1,4 @@
-// Code your design here
-// Code your design here
+
 //deign code of alu
 interface alu_if;
   logic [7:0] A;
