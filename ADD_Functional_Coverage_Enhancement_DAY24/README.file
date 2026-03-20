@@ -1,0 +1,109 @@
+Day-24 (Functional Coverage Enhancement)
+Objective
+
+Strengthen the verification environment by adding functional coverage to measure how well the ALU operations and input combinations are exercised during simulation.
+
+Functional coverage helps answer the question:
+
+Did the testbench actually verify all important scenarios?
+Coverage Added
+
+Three major coverage metrics were introduced.
+
+1️⃣ Operation Coverage
+
+Ensures that every ALU operation is exercised.
+
+Example operations:
+
+ADD
+SUB
+AND
+OR
+XOR
+
+Coverage point:
+
+coverpoint vif.op
+
+This checks whether all ALU operations are triggered during simulation.
+
+2️⃣ Operand Coverage
+
+The monitor tracks input value ranges for operands.
+
+Coverage points:
+
+coverpoint vif.A
+coverpoint vif.B
+
+This ensures the ALU is tested with different operand values, not just a few fixed numbers.
+
+3️⃣ Cross Coverage
+
+The most powerful coverage metric combines operations and input values.
+
+cross op, A, B
+
+This verifies combinations such as:
+
+ADD with small numbers
+ADD with large numbers
+XOR with mixed values
+SUB with edge values
+
+Cross coverage ensures the ALU is tested across multiple operational scenarios.
+
+Implementation Location
+
+Coverage is implemented inside the monitor, since the monitor observes all DUT signals.
+
+Coverage group structure:
+
+covergroup alu_cg
+
+  cp_op : coverpoint vif.op
+  cp_A  : coverpoint vif.A
+  cp_B  : coverpoint vif.B
+
+  cross cp_op, cp_A, cp_B
+
+endgroup
+
+The coverage group is sampled every time the monitor captures a transaction.
+
+Monitor Workflow
+wait for posedge clock
+capture DUT signals
+sample coverage
+send transaction to mailbox
+
+Pipeline:
+
+Generator → Driver → DUT
+                       ↓
+                    Monitor
+                       ↓
+                    Mailbox
+                       ↓
+                   Scoreboard
+Benefits
+
+Functional coverage provides:
+
+measurement of verification completeness
+visibility into untested scenarios
+ability to guide future test generation
+confidence in design correctness
+
+Coverage metrics help determine whether additional testing is needed.
+
+Skills Achieved (Day-24)
+
+You now understand:
+
+functional coverage
+covergroups
+coverpoints
+cross coverage
+coverage sampling in monitors
