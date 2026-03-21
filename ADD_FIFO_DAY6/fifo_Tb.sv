@@ -102,19 +102,3 @@ endmodule
 
 
 
-//output of the day6 FIFO-code
-
- KERNEL: ASDB file was created in location /home/runner/dataset.asdb
-# KERNEL: t=0 wr_ptr=x rd_ptr=x full=x empty=x rdata=x
-# KERNEL: t=15 wr_ptr=0 rd_ptr=0 full=0 empty=1 rdata=0
-# KERNEL: t=75 wr_ptr=1 rd_ptr=0 full=0 empty=0 rdata=0
-# KERNEL: t=105 wr_ptr=2 rd_ptr=0 full=0 empty=0 rdata=0
-# KERNEL: t=135 wr_ptr=3 rd_ptr=0 full=1 empty=0 rdata=0
-# KERNEL: t=165 wr_ptr=0 rd_ptr=1 full=1 empty=0 rdata=10
-# KERNEL: t=225 wr_ptr=0 rd_ptr=2 full=0 empty=0 rdata=20
-# KERNEL: t=255 wr_ptr=0 rd_ptr=3 full=0 empty=0 rdata=30
-# KERNEL: t=285 wr_ptr=0 rd_ptr=0 full=0 empty=1 rdata=99
-
-
-
-    
