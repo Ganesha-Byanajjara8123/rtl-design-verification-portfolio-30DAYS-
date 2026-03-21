@@ -1,0 +1,89 @@
+Day-25 (SystemVerilog Assertions)
+Objective
+
+Introduce SystemVerilog Assertions (SVA) to automatically verify ALU correctness at the signal level.
+
+Assertions allow the simulator to detect incorrect behavior immediately during simulation.
+
+Motivation
+
+Until now, correctness was verified using the scoreboard.
+
+Verification pipeline:
+
+Generator → Driver → DUT
+                       ↓
+                    Monitor
+                       ↓
+                    Scoreboard
+
+The scoreboard checks results after transactions are collected.
+
+However, this approach does not detect issues immediately when signals change.
+
+Assertions provide real-time verification.
+
+Assertion Concept
+
+Assertions express design expectations such as:
+
+If operation = ADD
+then result must equal A + B
+
+This rule can be expressed using a property.
+
+Implementation
+
+Assertions are implemented inside the interface, since it observes all DUT signals.
+
+Example property for ADD operation:
+
+property add_check;
+  @(posedge clk)
+  (op == 3'b000) |-> (result == A + B);
+endproperty
+
+The property is then enforced using:
+
+assert property(add_check);
+Meaning of the Assertion
+
+The expression:
+
+(op == 3'b000) |-> (result == A + B)
+
+means:
+
+If ADD operation occurs at this clock cycle
+then the result must equal A + B
+
+The operator |-> is a non-overlapping implication, meaning the condition must hold after the triggering event.
+
+Behavior When Assertion Fails
+
+If the ALU produces an incorrect result, the simulator reports:
+
+Assertion Failed: add_check
+
+This immediately highlights a design bug.
+
+Benefits
+
+Assertions provide:
+
+automatic bug detection
+cycle-accurate checking
+design rule enforcement
+faster debugging
+
+Assertions are widely used in industry verification flows.
+
+Skills Achieved (Day-25)
+
+You now understand:
+
+SystemVerilog Assertions (SVA)
+property definition
+assert property usage
+non-overlapping implication
+signal-level verification
