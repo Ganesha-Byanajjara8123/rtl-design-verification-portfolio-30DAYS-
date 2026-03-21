@@ -1,1 +1,8 @@
-
+i BUILD : _
+✔ One-slot full detection
+✔ Empty detection
+✔ Overflow protection
+✔ Underflow protection
+✔ Simultaneous R/W when full
+✔ Correct circular wrap
+✔ Verified by simulation
