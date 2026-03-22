@@ -1,0 +1,90 @@
+Day-26 (Complete ALU Assertions)
+Objective
+
+Extend the assertion framework to verify all ALU operations automatically.
+
+Day-25 introduced an assertion for the ADD operation.
+
+Day-26 expands this to cover the entire ALU functionality.
+
+Operations Verified
+
+The ALU supports the following operations:
+
+000 → ADD
+001 → SUB
+010 → AND
+011 → OR
+100 → XOR
+
+Each operation now has a dedicated assertion property.
+
+Assertion Structure
+
+All properties follow the same pattern:
+
+@(posedge clk)
+(op == OPCODE) |-> (result == expected_operation)
+
+Meaning:
+
+When an operation occurs
+the result must match the correct computation
+Assertions Implemented
+ADD
+result = A + B
+SUB
+result = A - B
+AND
+result = A & B
+OR
+result = A | B
+XOR
+result = A ^ B
+
+Each rule is verified at every clock cycle.
+
+Verification Layers in the Project
+
+The ALU is now verified at three different levels:
+
+Signal-Level Checking
+
+Assertions detect incorrect outputs immediately.
+
+assert property(...)
+Transaction-Level Checking
+
+The scoreboard verifies transaction correctness.
+
+scoreboard comparison
+Scenario Coverage
+
+Functional coverage measures how well operations and inputs are tested.
+
+covergroup
+coverpoints
+cross coverage
+
+Together these provide strong verification confidence.
+
+Benefits
+
+Adding assertions provides:
+
+automatic bug detection
+cycle-accurate correctness checking
+faster debugging
+stronger verification methodology
+
+Assertions are a core technique in industrial verification flows.
+
+Skills Achieved (Day-26)
+
+You now understand:
+
+SystemVerilog Assertions (SVA)
+property definitions
+assert property
+operation-specific assertions
+signal-level verification
