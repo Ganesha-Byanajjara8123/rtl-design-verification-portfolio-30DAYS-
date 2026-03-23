@@ -1,0 +1,67 @@
+README — Day-27 (Edge-Case Testing)
+Objective
+
+Enhance the verification environment by introducing directed edge-case tests in addition to random stimulus.
+
+Random testing explores a wide input space, but it may miss critical boundary conditions.
+
+Edge-case testing ensures that the design behaves correctly under extreme input values.
+
+Edge Cases Tested
+
+The ALU verification now includes the following boundary scenarios:
+
+1️⃣ Zero Inputs
+A = 0
+B = 0
+
+This verifies behavior when both operands are zero.
+
+2️⃣ Maximum Inputs
+A = 255
+B = 255
+
+Tests the ALU with maximum 8-bit values.
+
+3️⃣ Overflow Scenario
+A = 255
+B = 1
+
+Checks behavior when addition may overflow.
+
+Generator Update
+
+The generator now produces two types of stimulus:
+
+Random transactions
+Directed edge-case transactions
+
+Workflow:
+
+repeat(100) → random tests
++3 directed edge cases
+Verification Pipeline
+Generator → Driver → DUT
+                       ↓
+                    Monitor
+                       ↓
+                    Scoreboard
+
+Edge cases pass through the same verification pipeline as random tests.
+
+Benefits
+
+Edge-case testing improves verification quality by:
+
+ensuring boundary values are tested
+detecting overflow conditions
+validating zero-result scenarios
+strengthening confidence in design correctness
+Skills Achieved (Day-27)
+
+You now understand:
+
+directed testing
+edge-case verification
+boundary-value testing
+combining random and directed tests
