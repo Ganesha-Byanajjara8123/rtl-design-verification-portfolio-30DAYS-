@@ -1,0 +1,98 @@
+# Day 28 – Bug Injection Verification
+
+## Objective
+
+Verify that the verification environment can detect **real design bugs** using assertions and scoreboard checking.
+
+In verification, we must prove that the **testbench can detect design errors**, not just assume the design is correct.
+
+---
+
+## Concept
+
+A **bug was intentionally injected into the ALU design** to test whether the verification environment detects incorrect behavior.
+
+### Correct ALU Operation
+
+```
+3'b100 : result = A ^ B;   // XOR operation
+```
+
+### Injected Bug
+
+```
+3'b100 : result = A | B;   // Incorrect logic (OR instead of XOR)
+```
+
+This creates an intentional functional mismatch when the **XOR opcode is executed**.
+
+---
+
+## Verification Components Used
+
+The verification environment built in previous days includes:
+
+* **Generator** – Produces randomized transactions
+* **Driver** – Drives inputs to the DUT
+* **DUT (ALU)** – Design under test
+* **Monitor** – Observes DUT signals
+* **Scoreboard** – Compares expected vs actual results
+* **Assertions** – Checks correctness of operations
+* **Mailbox communication** – Synchronizes verification components
+
+---
+
+## Expected Simulation Behavior
+
+When the XOR operation is triggered:
+
+```
+Expected: A ^ B
+Actual:   A | B
+```
+
+Because of the bug:
+
+1. **Scoreboard detects mismatch**
+2. **Assertion failure occurs**
+3. Verification environment reports incorrect behavior
+
+Example simulation output:
+
+```
+Assertion FAILED : xor_check
+Scoreboard mismatch detected
+```
+
+---
+
+## What This Proves
+
+The verification environment successfully detects real design errors.
+
+This confirms that the verification system is capable of:
+
+* Functional checking
+* Assertion based verification
+* Transaction-level verification
+* Automated bug detection
+
+---
+
+## Key Learning
+
+Verification engineers must prove that:
+
+```
+Testbench can detect design bugs
+```
+
+Bug injection is a common industry technique used to validate the reliability of verification environments.
+
+---
+
+## Status
+
+Day 28 completed successfully.
+
+Verification environment correctly identifies functional bugs in the DUT.
