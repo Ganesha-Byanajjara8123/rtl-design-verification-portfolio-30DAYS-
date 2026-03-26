@@ -1,0 +1,94 @@
+# SystemVerilog ALU Verification Environment
+
+## Overview
+
+This project implements a **transaction-based verification environment** for an 8-bit Arithmetic Logic Unit (ALU) using SystemVerilog.
+
+The environment verifies ALU functionality using:
+
+* Random stimulus generation
+* Directed edge-case testing
+* Mailbox-based component communication
+* Monitor-based DUT observation
+* Scoreboard result comparison
+* Bug injection testing
+
+---
+
+## Verification Flow
+
+Generator → Driver → DUT → Monitor → Scoreboard
+
+### Components
+
+**Generator**
+Creates randomized transactions for ALU operations.
+
+**Driver**
+Drives the generated transactions to the DUT through the interface.
+
+**Monitor**
+Observes DUT signals and converts them into transactions.
+
+**Scoreboard**
+Calculates expected results and compares them with DUT output.
+
+---
+
+## Operations Verified
+
+| Opcode | Operation   |
+| ------ | ----------- |
+| 000    | Addition    |
+| 001    | Subtraction |
+| 010    | AND         |
+| 011    | OR          |
+| 100    | XOR         |
+
+---
+
+## Verification Techniques Used
+
+* Transaction-based verification
+* Mailbox communication
+* Random stimulus generation
+* Directed testing
+* Functional scoreboard checking
+* Bug injection testing
+
+---
+
+## Bug Injection Example
+
+To validate the verification environment, a bug was intentionally introduced in the DUT:
+
+```
+3'b100 : result = A | B   // incorrect implementation
+```
+
+The scoreboard successfully detects mismatches:
+
+```
+FAIL : A=119 B=166 OP=100 EXPECTED=209 GOT=247
+FAIL : A=193 B=84 OP=100 EXPECTED=149 GOT=213
+FAIL : A=107 B=133 OP=100 EXPECTED=238 GOT=239
+```
+
+This confirms the verification environment correctly detects design bugs.
+
+---
+
+## Key Learning Outcomes
+
+* Building a layered verification environment
+* Using SystemVerilog mailboxes for communication
+* Implementing a functional scoreboard
+* Detecting functional mismatches automatically
+* Performing bug injection validation
+
+---
+
+## Author
+BYANAJJARA GANESHA
+E&C Engineering Student(final year)
+Focused on RTL Design and Verification
