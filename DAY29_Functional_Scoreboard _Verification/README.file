@@ -1,0 +1,180 @@
+# ALU Verification Environment (SystemVerilog)
+
+## Project Overview
+
+This project implements a **transaction-based verification environment** for an 8-bit Arithmetic Logic Unit (ALU) using SystemVerilog.
+
+The verification environment validates ALU functionality using:
+
+* Random stimulus generation
+* Directed edge-case testing
+* Transaction monitoring
+* Functional scoreboard comparison
+* Assertion checking
+* Bug injection testing
+
+The goal is to demonstrate that the verification environment can both:
+
+* Verify correct functionality
+* Detect design bugs automatically
+
+---
+
+# Verification Architecture
+
+The verification flow follows a standard layered architecture:
+
+Generator → Driver → DUT → Monitor → Scoreboard
+
+Component responsibilities:
+
+| Component  | Role                                                           |
+| ---------- | -------------------------------------------------------------- |
+| Generator  | Produces randomized and directed transactions                  |
+| Driver     | Drives stimulus to the DUT                                     |
+| DUT        | ALU design under test                                          |
+| Monitor    | Observes DUT signals and captures results                      |
+| Scoreboard | Calculates expected results and compares them with DUT outputs |
+
+Communication between components is implemented using **mailboxes**.
+
+---
+
+# ALU Operations Verified
+
+| Opcode | Operation           |
+| ------ | ------------------- |
+| 000    | Addition (A + B)    |
+| 001    | Subtraction (A - B) |
+| 010    | Bitwise AND         |
+| 011    | Bitwise OR          |
+| 100    | Bitwise XOR         |
+
+---
+
+# Test Strategy
+
+The generator produces:
+
+* 100 randomized transactions
+* Directed edge-case tests
+* A directed bug-trigger transaction
+
+Edge-case stimulus includes:
+
+```
+A = 0, B = 0
+A = 255, B = 255
+A = 255, B = 1
+A = 5, B = 3 (bug trigger case)
+```
+
+---
+
+# Case 1 – Correct DUT
+
+When the ALU implementation is correct:
+
+```
+3'b100 : result = A ^ B
+```
+
+Simulation output shows all operations verified successfully.
+
+Example output:
+
+```
+PASS : A=85 B=171 OP=10 RESULT=1
+PASS : A=149 B=2 OP=11 RESULT=151
+PASS : A=26 B=89 OP=0 RESULT=115
+PASS : A=231 B=119 OP=0 RESULT=94
+PASS : A=49 B=0 OP=1 RESULT=49
+PASS : A=68 B=24 OP=1 RESULT=44
+```
+
+This confirms the DUT behaves as expected.
+
+---
+
+# Case 2 – Bug Injection Test
+
+To validate the verification environment, a bug is intentionally injected.
+
+### Injected Bug
+
+```
+3'b100 : result = A | B
+```
+
+This replaces the XOR operation with OR.
+
+---
+
+### Expected Behavior
+
+Example failing test:
+
+```
+A = 119
+B = 166
+OP = XOR
+```
+
+Correct result:
+
+```
+119 ^ 166 = 209
+```
+
+Bugged DUT result:
+
+```
+119 | 166 = 247
+```
+
+Scoreboard detects mismatch:
+
+```
+FAIL : A=119 B=166 OP=100 EXPECTED=209 GOT=247
+FAIL : A=193 B=84 OP=100 EXPECTED=149 GOT=213
+FAIL : A=107 B=133 OP=100 EXPECTED=238 GOT=239
+```
+
+This demonstrates that the verification environment successfully detects functional bugs.
+
+---
+
+# Verification Features Implemented
+
+The project demonstrates several key verification techniques:
+
+* Transaction-based verification
+* Random stimulus generation
+* Directed edge-case testing
+* Functional scoreboard comparison
+* Mailbox communication
+* Monitor-based signal capture
+* Bug injection testing
+
+# Key Learning
+
+This project demonstrates how verification engineers build environments to:
+
+* generate stimulus
+* drive DUT inputs
+* observe DUT outputs
+* compute expected results
+* detect functional mismatches automatically
+
+Bug injection confirms that the verification environment is capable of identifying real design errors.
+
+---
+
+# Status
+
+✔ Random testing implemented
+✔ Edge-case testing implemented
+✔ Functional scoreboard verification implemented
+✔ Bug injection verification implemented
+
+The project successfully demonstrates a **complete SystemVerilog verification workflow for an ALU design**.
