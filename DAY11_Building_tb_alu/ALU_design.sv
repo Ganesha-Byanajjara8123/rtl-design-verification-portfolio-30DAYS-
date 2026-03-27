@@ -1,3 +1,5 @@
+
+//In day11 i build verifcation with mailbox and that flow is Generator  ── put(txn) ──► mailbox ── get(txn) ──► Driver
 //for transanction
 class alu_txn;
   rand bit [7:0] A;
@@ -16,35 +18,38 @@ class generator;
   //create driver obj and 
 //the transaction generated will be sent to driver
   alu_txn txn;
-  driver  drv;
+  mailbox mbx;
+  
+   function new(mailbox mbx);
+    this.mbx = mbx;
+  endfunction
   
   task run();
-    drv = new();
-    
     repeat(5)begin
-    txn = new(); 
-    txn.randomize();
-    drv.driver(txn);
-    txn.display();
+    txn = new();      
+    txn.randomize();     
+      mbx.put(txn);
     end
   endtask
       
 endclass
 
 //for active the driver when txn ready
-class driver;
-  monitor mon;
-  scoreboard sb;
-  
-    
-  task drive(alu_txn txn);
-    	
-    $display("driver reccieved transaction");
-      txn.display();
-    mon.observe(txn);
-    sb.check(txn;)
-    endtask
-endclass
+  class driver;
+   alu_txn txn;
+    mailbox mbx;
+
+    function new(mailbox mbx);
+      this.mbx = mbx;
+      endfunction
+
+    task run();
+      repeat(5) begin
+        mbx.get(txn);  //take transaction from mailbox-store in txn
+        txn.display();
+      end
+      endtask
+  endclass
     
 //for monitor to observe the DUT
 
